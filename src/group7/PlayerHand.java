@@ -5,7 +5,6 @@
  */
 package group7;
 
-import java.util.ArrayList;
 
 /**
  *
@@ -17,23 +16,14 @@ public class PlayerHand extends DeckOf52 {
         cards.add(a);
     }
 
-    public ArrayList<Card> getHand() {
-        return cards;
-    }
-    
-    public int cardCount(){
-        return cards.size();
-    }
-
     public PlayingCard draw() {
         PlayingCard draw = (PlayingCard)cards.get(0);
+        cards.remove(0);
         return draw;
         
     }
     
-    public Card blindDraw() {
-        return cards.get(0);
-    }
+
    /*@Override
     public String toString(){
         
