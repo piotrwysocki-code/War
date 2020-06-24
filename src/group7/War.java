@@ -26,8 +26,8 @@ public class War extends Game implements Comparator {
         Scanner in = new Scanner(System.in);
         Soldier player1 = new Soldier();
         Soldier player2 = new Soldier();
-        PlayerHand inPlayP1 = new PlayerHand();
-        PlayerHand inPlayP2 = new PlayerHand();
+        PlayerHand inPlay = new PlayerHand();
+       /* PlayerHand inPlayP2 = new PlayerHand();*/
         PlayerHand p1hand = new PlayerHand();
         PlayerHand p2hand = new PlayerHand();
         DeckOf52 deck = new DeckOf52();
@@ -45,43 +45,51 @@ public class War extends Game implements Comparator {
             deck.Cards().remove(i);
             p2hand.addCard(deck.Cards().get(i));
         }
+        
+        System.out.println(p1hand);
+        System.out.println(p2hand);
 
         deck.Cards().clear();
 
-        int p1CardCount = p1hand.getSize();
-        int p2CardCount = p2hand.getSize();
+        while (p1hand.getSize() > 0 && p2hand.getSize() > 0) {
+            boolean draw = false;
 
-        while (p1CardCount > 0 && p2CardCount > 0) {
-        
-        System.out.print(player1.getName() + ", draw!? \n(Y/N): ");
-        PlayingCard p1draw = p1hand.draw();
-        inPlayP1.addCard(p1draw);
-        System.out.println(player1.getName() + " DRAWS!: " + p1hand.draw());
-        
-        System.out.print(player2.getName() + ", draw!? \n(Y/N): ");
-        PlayingCard p2draw = p2hand.draw();   
-        inPlayP2.addCard(p2draw);
-        System.out.println(player2.getName() + " DRAWS!: " + p2hand.draw());
-          
+            while (draw == false) {
+                System.out.print(player1.getName() + ", draw!? \n(Y/N): ");
+                if (in.next().equalsIgnoreCase("y")) {
+                    System.out.print(player2.getName() + ", draw!? \n(Y/N): ");
+                    if (in.next().equalsIgnoreCase("y")) {
+                        draw = true;
+                    }
+                }
+            }
+
+            PlayingCard p1draw = p1hand.draw();
+            PlayingCard p2draw = p2hand.draw();
+
+            inPlay.addCard(p1draw);
+            inPlay.addCard(p2draw);
+
+            System.out.println(player1.getName() + " DRAWS!: " + p1hand.draw()
+                    + "\n" + player2.getName() + " DRAWS!: " + p2hand.draw());
+
             int result = compare(p1draw, p2draw);
 
             switch (result) {
                 case 0:
                     char again = 'n';
                     do {
-                        p1draw = p1hand.draw();//blind draw
-                        inPlayP1.addCard(p1draw);
-                        
                         p1draw = p1hand.draw();
-                        inPlayP1.addCard(p1draw);
+                        inPlay.addCard(p1draw);
+                        p1draw = p1hand.draw();
+                        inPlay.addCard(p1draw);
                         System.out.println(player1.getName() + " DRAWS!: "
                                 + "\n[blind draw]\n" + p1draw);
 
-                        p2draw = p2hand.draw();//blind draw
-                        inPlayP2.addCard(p2draw);
-                        
                         p2draw = p2hand.draw();
-                        inPlayP2.addCard(p2draw);
+                        inPlay.addCard(p2draw);
+                        p2draw = p2hand.draw();
+                        inPlay.addCard(p2draw);
                         System.out.println(player2.getName() + " DRAWS!: "
                                 + "\n[blind draw]\n" + p2hand.draw());
 
@@ -89,17 +97,19 @@ public class War extends Game implements Comparator {
                         switch (result1) {
                             case 0:
                                 again = 'y';
-                                break;                             
+                                break;
+                                
                             case 1:
                                 System.out.println(player1.getName() + " takes the cake.");
-                                p1hand.Cards().addAll(inPlayP2.Cards());
-                                inPlayP2.Cards().clear();
+                                p1hand.Cards().addAll(inPlay.Cards());
+                                inPlay.Cards().clear();
                                 again = 'n';
-                                break;                               
+                                break;                              
+                                        
                             case -1:
                                 System.out.println(player1.getName() + " takes the cake.");
-                                p2hand.Cards().addAll(inPlayP1.Cards());
-                                inPlayP1.Cards().clear();
+                                p2hand.Cards().addAll(inPlay.Cards());
+                                inPlay.Cards().clear();
                                 again = 'n';
                                 break;
                         }
@@ -107,11 +117,13 @@ public class War extends Game implements Comparator {
                     break;                   
                 case 1:
                     System.out.println(player1.getName() + " takes the cake.");
-                    p1hand.Cards().add(p2draw);
+                    p1hand.Cards().addAll(inPlay.Cards());
+                    inPlay.Cards().clear();
                     break;                   
                 case -1:
                     System.out.println(player2.getName() + " takes the cake.");
-                    p2hand.Cards().add(p1draw);
+                    p2hand.Cards().addAll(inPlay.Cards());
+                    inPlay.Cards().clear();
                     break;
             }
 
@@ -144,6 +156,8 @@ public class War extends Game implements Comparator {
                     again = in.next();
 
                 } while (again != null);*/
+            System.out.println(player1.getName() + " Cards in Hand: " + p1hand.getSize() 
+                    + " " + player2.getName()+ " Cards in Hand: "+ p2hand.getSize());
         }
 
     }
