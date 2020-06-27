@@ -18,7 +18,7 @@ public class DeckOf52 extends GroupOfCards{
     public final void newDeck(){
         
         for (PlayingCard.Suit b: PlayingCard.Suit.values()) {
-            for (PlayingCard.Value a: PlayingCard.Value.values()) {
+            for (Value a: Value.values()) {
                  PlayingCard addition = new PlayingCard(a, b);
                  cards.add(addition);
             }  

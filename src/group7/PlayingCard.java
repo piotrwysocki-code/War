@@ -9,7 +9,7 @@ package group7;
  *
  * @author Asus X540LA
  */
-public class PlayingCard extends Card{
+public class PlayingCard extends Card {
     
     protected Suit suit;
     protected Value value;
@@ -21,24 +21,8 @@ public class PlayingCard extends Card{
         CLUBS, 
         DIAMONDS, 
         SPADES
-    }    
-    
-    public enum Value{ 
-        ACE , 
-        TWO, 
-        THREE, 
-        FOUR, 
-        FIVE, 
-        SIX, 
-        SEVEN, 
-        EIGHT,
-        NINE, 
-        TEN,
-        JACK, 
-        QUEEN,
-        KING
-    }
-    
+    }      
+       
     public PlayingCard(Value a, Suit b){
         this.suit = b;
         this.value = a;
@@ -90,4 +74,15 @@ public class PlayingCard extends Card{
     
     }
     
+  
+     public int compareTo(Object o) {
+        PlayingCard test = (PlayingCard)o;
+        if (this.getValue().getIntValue() == test.getValue().getIntValue()) {
+            return 0;
+        } else if (this.getValue().getIntValue() < test.getValue().getIntValue()) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
 }

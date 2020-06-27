@@ -27,7 +27,7 @@ public class GroupOfCards {
      * @return the group of cards.
      */
     public ArrayList<Card> Cards() {
-        return cards;
+        return this.cards;
     }
 
     public void shuffle() {

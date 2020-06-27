@@ -10,30 +10,17 @@ package group7;
  *
  * @author Asus X540LA
  */
-public class PlayerHand extends DeckOf52 {
+public class PlayerHand extends GroupOfCards {
 
     public void addCard(Card a) {
         cards.add(a);
     }
 
-    public PlayingCard draw() {
-        PlayingCard draw = (PlayingCard)cards.get(0);
+    public Card play() {
+        Card draw = cards.get(0);
         cards.remove(0);
         return draw;
         
     }
     
-
-   /*@Override
-    public String toString(){
-        
-        String deck = ""; 
-        int counter = 1;
-        
-        for(Card a: cards){
-            deck += "\n" + "[" + counter + "] " ;
-            counter++;
-        }
-        return deck;
-    }*/
 }

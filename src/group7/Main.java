@@ -11,10 +11,11 @@ package group7;
  */
 public class Main {
     public static void main(String[] args){
-        
-        War game1 = new War();
+     
+      War game1 = new War();
         
         game1.play();
+      
     }
     
 }
