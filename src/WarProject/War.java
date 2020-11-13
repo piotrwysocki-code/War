@@ -25,7 +25,8 @@ public class War extends Game{
     }
     
     /**
-     * The main function of the game
+     * The main function of the game, game continues until one player
+     * runs out of cards, or 100 rounds are reached
      */
     @Override
     public void play() {
