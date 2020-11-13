@@ -1,27 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package group7;
+package WarProject;
 
 /**
- *
- * @author Asus X540LA
+ * This class models a classic playing card
+ * 
+ * @author Piotr Wysocki 8/8/2020
  */
-public class PlayingCard extends Card {
+public final class PlayingCard extends Card {
     
     protected Suit suit;
-    protected Value value;
-
-  
-    
-    public enum Suit{
-        HEARTS, 
-        CLUBS, 
-        DIAMONDS, 
-        SPADES
-    }      
+    protected Value value;    
        
     public PlayingCard(Value a, Suit b){
         this.suit = b;
@@ -30,7 +17,7 @@ public class PlayingCard extends Card {
     }
     
      /**
-     * Getting method of 'Value'
+     * Getter method of 'Value'
      * 
      * @return value
      */
@@ -70,12 +57,17 @@ public class PlayingCard extends Card {
     @Override
     public String toString(){
         
-        return String.format("[" + value + " " + suit + "] ");
+        return String.format("[" + value + " | " + suit + "]");
     
     }
     
-  
-     public int compareTo(Object o) {
+    /**
+     * method used to compare two playing cards
+     * 
+     * @param o
+     * @return int
+     */
+    public int compareTo(Object o) {
         PlayingCard test = (PlayingCard)o;
         if (this.getValue().getIntValue() == test.getValue().getIntValue()) {
             return 0;
@@ -85,4 +77,5 @@ public class PlayingCard extends Card {
             return 1;
         }
     }
+     
 }

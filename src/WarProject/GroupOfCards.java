@@ -3,7 +3,7 @@
  * Students can modify and extend to implement their game.
  * Add your name as an author and the date!
  */
-package group7;
+package WarProject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,19 +14,19 @@ import java.util.Collections;
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
+ * @author Piotr Wysocki 8/8/2020
  */
 public class GroupOfCards {
 
     //The group of cards, stored in an ArrayList
-    protected ArrayList<Card> cards = new ArrayList();
+    protected ArrayList cards = new ArrayList();
     
-    //the size of the grouping
     /**
      * A method that will get the group of cards as an ArrayList
      *
      * @return the group of cards.
      */
-    public ArrayList<Card> Cards() {
+    public ArrayList<Card> cards() {
         return this.cards;
     }
 
@@ -47,11 +47,11 @@ public class GroupOfCards {
         String deck = ""; 
         int counter = 1;
         
-        for(Card a: cards){
+        for(Object a: cards){
             deck += "\n" + "[" + counter + "] " + a.toString();
             counter++;
         }
         return deck;
    
     }
-}//end class
+}

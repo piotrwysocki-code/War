@@ -3,7 +3,7 @@
  * Students can modify and extend to implement their game.
  * Add your name as an author and the date!
  */
-package group7;
+package WarProject;
 
 import java.util.ArrayList;
 
@@ -13,6 +13,7 @@ import java.util.ArrayList;
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
+ * @author Piotr Wysocki 8/8/2020
  */
 public abstract class Game {
 
@@ -38,10 +39,10 @@ public abstract class Game {
     }
 
     /**
-     * @param players the players of this game
+     * @param p the players of this game
      */
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
+    public void addPlayer(Player p) {
+        players.add(p);
     }
 
     /**

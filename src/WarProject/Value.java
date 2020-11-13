@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package group7;
+package WarProject;
 
 /**
- *
- * @author Asus X540LA
+ * Enum class for the playing card's value
+ * 
+ * @author Piotr Wysocki 8/8/2020
  */
 public enum Value {
         TWO(2), 
